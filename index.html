@@ -22,6 +22,7 @@
    <script src="js/Cantones.js" type="text/javascript"></script>
 	 
     <script>
+	    
       var mapa = L.map('map').setView([9.7, -84], 8);
       var osm  = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
@@ -33,6 +34,14 @@
     	accessToken: 'pk.eyJ1IjoibXZhcmdhcyIsImEiOiJRc3ZyTmZzIn0.npefgTinHjwxhTt8fjzeIw'
       });    
       osm.addTo(mapa);
+
+      // Capa de tipo L.tileLayer definida con el complemento Leaflet-providers
+      var sta = L.tileLayer.provider('Stamen.Watercolor');
+      sta.addTo(mapa);
+      
+      // Capa de tipo L.tileLayer definida con el complemento Leaflet-providers
+      var topo = L.tileLayer.provider('OpenTopoMap');
+      topo.addTo(mapa);   
 	    			
 		function infocanton(feature, layer) {
 	var popupContent = "Cantones: ";
@@ -103,6 +112,8 @@
       var baseLayers = {
 	"OpenStreetMap": osm,
 	"MapBox" : mbox
+	"Stamen Watercolor" : sta,
+	"OpenTopoMap" : topo
       };
 	  
    var overlays = {
