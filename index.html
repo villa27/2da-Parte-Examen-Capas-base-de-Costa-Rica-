@@ -19,7 +19,7 @@
     <div id='map'></div>
 
    <script src="js/Cantones.js" type="text/javascript"></script>
-   <script src="js/Cantones.js" type="text/javascript"></script>
+ 
 	  
 <!-- Referencia al complemento Leaflet-providers -->	 
   
@@ -47,7 +47,7 @@
 	    
       // Capa de tipo L.tileLayer definida con el complemento Leaflet-providers
       var agua = L.tileLayer.provider('Stamen.Watercolor');
-      sta.addTo(mapa);
+      agua.addTo(mapa);
       	    			
         function infocanton(feature, layer) {
 	var popupContent = "Cantones: ";
