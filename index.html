@@ -51,7 +51,7 @@
 	    
       var wmsLayer = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
       layers: 'IGN_5:LimiteProvincial_5k'
-      })snit.addTo(mapa); 
+      }).addTo(mapa); 
 	    	    
       	    			
         function infocanton(feature, layer) {
@@ -124,8 +124,7 @@
 	"OpenStreetMap": osm,
 	"OpenTopoMap" : topo, 
 	"Stamen.Watercolor" : agua
-	      "SNIT" : snit
-      };
+	     };
 	  
    var overlays = {
 	"Nombre de Cantón: ": registrocanton,
