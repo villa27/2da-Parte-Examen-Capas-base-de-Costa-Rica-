@@ -39,20 +39,30 @@
     	accessToken: 'pk.eyJ1IjoibXZhcmdhcyIsImEiOiJRc3ZyTmZzIn0.npefgTinHjwxhTt8fjzeIw'
       });    
       osm.addTo(mapa);
-
-      var topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-	maxZoom: 17,
-	attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-	});
-      topo.addTo(mapa);
 	    
-      // Capa de tipo L.tileLayer definida con el complemento Leaflet-providers
-      var agua = L.tileLayer.provider('Stamen.Watercolor');
-      agua.addTo(mapa);
-	    
+      // Capas de tipo L.tileLayer definida con el complemento Leaflet-providers
+      var topo = L.tileLayer.provider('OpenTopoMap');
+      topo.addTo(mapa);      
+      var roads = L.tileLayer.provider('OpenMapSurfer.Roads');
+      roads.addTo(mapa);  
+      var esri = L.tileLayer.provider('Esri.WorldShadedRelief');
+      esri.addTo(mapa); 
+	
+      // Capas de tipo WMS
       var wmsLayer = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
       layers: 'limiteprovincial_5k'
-      }).addTo(mapa);   
+      });
+       wmsLayer.addTo(mapa);
+	    
+      var wmsLayer1 = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
+      layers: 'limitedistrital_5k'
+      });
+       wmsLayer1.addTo(mapa);
+	    
+      var wmsLayer2 = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
+      layers: 'linea_costa_5000'
+      });
+       wmsLayer2.addTo(mapa);	 
 	    
         function infocanton(feature, layer) {
 	var popupContent = "Cantones: ";
@@ -121,15 +131,21 @@
 	  L.control.scale().addTo(mapa)
 	  
       var baseLayers = {
-	"OpenStreetMap": osm,
-	"OpenTopoMap" : topo, 
-	"Stamen.Watercolor" : agua
-	     };
-	  
-   var overlays = {
-	"Nombre de Cantón: ": registrocanton,
-	"Población Total: ": pob
+	"OpenStreetMap"          : osm,
+	"OpenTopoMap"            : topo,
+	"OpenMapSurfer.Roads"    : roads,
+	"Esri.WorldShadedRelief" : esri
+	      
       };
+      var overlays = {
+	"Cantones": cantoncr, 
+	"Provincias" : wmsLayer,
+	"Distrito" :   wmsLayer1,
+	"Línea de Costa"     :   wmsLayer2      
+  
+	   	
+      };
+      L.control.layers(baseLayers, overlays).addTo(mapa);
     
       L.control.layers(baseLayers, overlays).addTo(mapa);
 	    
