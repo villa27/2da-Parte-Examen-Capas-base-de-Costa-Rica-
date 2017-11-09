@@ -67,6 +67,16 @@
       layers: 'limiteprovincial_5k'
       });
        Prov.addTo(mapa);
+
+      var vias = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
+      layers: 'vias_5000'
+      });
+       vias.addTo(mapa);
+	    
+      var hidro = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
+      layers: 'hidrografia_5000'
+      });
+       hidro.addTo(mapa);	
 	    
         function infocanton(feature, layer) {
 	var popupContent = "Cantones: ";
@@ -145,7 +155,9 @@
    var overlays = {
 	"Nombre de Cantón: ": registrocanton,
 	"Población Total: ": pob,
-	 "Provincias" : Prov
+	"Provincias" : Prov,
+	"Hidrografía" : hidro,
+	"Vias" : vias
       };
     
       L.control.layers(baseLayers, overlays).addTo(mapa);
