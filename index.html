@@ -48,10 +48,7 @@
       topo.addTo(mapa);
 	    
       // Capas de tipo L.tileLayer definida con el complemento Leaflet-providers
-	    
-      var agua = L.tileLayer.provider('Stamen.Watercolor');
-      agua.addTo(mapa);
-	    
+	       
       var esri = L.tileLayer.provider('Esri.WorldImagery');
       esri_WI.addTo(mapa); 
       
@@ -137,7 +134,6 @@
       var baseLayers = {
 	"OpenStreetMap"		: 	osm,
 	"OpenTopoMap" 		: 	topo, 
-	"Stamen.Watercolor" 	: 	agua,
 	"Esri.WorldImagery" 	: 	esri_WI,
 	"Esri.WorldTopoMap"	: 	esri_TM,   
         "Esri.WorldStreetMap"	: 	esri_SM  
