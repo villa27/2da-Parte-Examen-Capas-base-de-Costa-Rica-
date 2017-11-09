@@ -49,20 +49,7 @@
       esri.addTo(mapa); 
 	
       // Capas de tipo WMS
-      var wmsLayer = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
-      layers: 'limiteprovincial_5k'
-      });
-       wmsLayer.addTo(mapa);
-	    
-      var wmsLayer1 = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
-      layers: 'limitedistrital_5k'
-      });
-       wmsLayer1.addTo(mapa);
-	    
-      var wmsLayer2 = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
-      layers: 'linea_costa_5000'
-      });
-       wmsLayer2.addTo(mapa);	 
+ 
 	    
         function infocanton(feature, layer) {
 	var popupContent = "Cantones: ";
@@ -137,14 +124,7 @@
 	"Esri.WorldShadedRelief" : esri
 	      
       };
-      var overlays = {
-	"Cantones": cantoncr, 
-	"Provincias" : wmsLayer,
-	"Distrito" :   wmsLayer1,
-	"Línea de Costa"     :   wmsLayer2      
-  
-	   	
-      };
+
       L.control.layers(baseLayers, overlays).addTo(mapa);
     
       L.control.layers(baseLayers, overlays).addTo(mapa);
