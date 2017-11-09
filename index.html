@@ -124,11 +124,15 @@
 	"Esri.WorldShadedRelief" : esri
 	      
       };
+      var overlays = {
+	"Cantones": cantoncr, 
+
+  
+	   	
+      };
 
       L.control.layers(baseLayers, overlays).addTo(mapa);
-    
-      L.control.layers(baseLayers, overlays).addTo(mapa);
-	    
+   	    
       L.control.mousePosition().addTo(mapa);
     </script>
   </body>
