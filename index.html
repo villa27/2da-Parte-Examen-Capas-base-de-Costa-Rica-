@@ -47,12 +47,22 @@
 	});
       topo.addTo(mapa);
 	    
-      // Capa de tipo L.tileLayer definida con el complemento Leaflet-providers
+      // Capas de tipo L.tileLayer definida con el complemento Leaflet-providers
+	    
       var agua = L.tileLayer.provider('Stamen.Watercolor');
       agua.addTo(mapa);
 	    
       var esri = L.tileLayer.provider('Esri.WorldImagery');
-      esri.addTo(mapa); 
+      esri_WI.addTo(mapa); 
+      
+      var esri = L.tileLayer.provider('Esri.WorldTopoMap');
+      esri_TM.addTo(mapa); 
+	    
+      var esri = L.tileLayer.provider('Esri.WorldStreetMap');
+      esri_SM.addTo(mapa); 
+	    
+	    
+      // Capas de tipo WMS
 	    
       var wmsLayer = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
       layers: 'limiteprovincial_5k'
@@ -125,11 +135,17 @@
 	  L.control.scale().addTo(mapa)
 	  
       var baseLayers = {
-	"OpenStreetMap": osm,
-	"OpenTopoMap" : topo, 
-	"Stamen.Watercolor" : agua,
-	"Esri.WorldImagery" : esri
-	     };
+	"OpenStreetMap"		: 	osm
+	"OpenTopoMap" 		: 	topo 
+	"Stamen.Watercolor" 	: 	agua
+	"Esri.WorldImagery" 	: 	esri_WI
+	"Esri.WorldTopoMap"	: 	esri_TM   
+        "Esri.WorldStreetMap"	: 	esri_SM 
+      
+      
+      
+      
+      };
 	  
    var overlays = {
 	"Nombre de Cantón: ": registrocanton,
