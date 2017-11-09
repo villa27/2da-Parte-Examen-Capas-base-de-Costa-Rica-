@@ -55,7 +55,7 @@
       var agua = L.tileLayer.provider('Stamen.Watercolor');
       agua.addTo(mapa);
       
-      var terrain = L.tileLayer.provider('Stamen.Terrain');
+      var terrain = L.tileLayer.provider('Esri.WorldTerrain');
       terrain.addTo(mapa); 
 	    
       var esri_WI = L.tileLayer.provider('Esri.WorldImagery');
@@ -63,9 +63,10 @@
 	    
 	    
       // Capas de tipo WMS	    
-      var wmsLayer = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
+      var Prov = L.tileLayer.wms('http://geos.snitcr.go.cr/be/IGN_5/wms?', {
       layers: 'limiteprovincial_5k'
-      }).addTo(mapa);   
+      });
+       Prov.addTo(mapa);
 	    
         function infocanton(feature, layer) {
 	var popupContent = "Cantones: ";
@@ -137,13 +138,14 @@
 	"OpenStreetMap": osm,
 	"OpenTopoMap" : topo, 
 	"Stamen.Watercolor" : agua,
-	"Stamen.Terrain" : terrain, 
+	"Esri.WorldTerrain" : terrain, 
 	"Esri.WorldImagery": esri_WI
 	     };
 	  
    var overlays = {
 	"Nombre de Cantón: ": registrocanton,
-	"Población Total: ": pob
+	"Población Total: ": pob,
+	 "Provincias" : Prov
       };
     
       L.control.layers(baseLayers, overlays).addTo(mapa);
